@@ -1,0 +1,44 @@
+# Strictly exclude all user documents, library projects, snapshots, comments, caches & audio
+03_ASSETS/
+04_AUDIO/
+*.pdf
+*.docx
+*.doc
+*.rtf
+*.epub
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.flac
+*.db
+*.sqlite
+*.sqlite3
+
+# Exclude legacy pre-v3.3 iterations (v3.3 only in public repo)
+04_SCRIPTS/*_v1.*
+04_SCRIPTS/*_v2.*
+04_SCRIPTS/*_v3.0_*
+04_SCRIPTS/*_v3.1_*
+04_SCRIPTS/*_v3.2_*
+04_SCRIPTS/KOKORO_CODE_Stop_*
+02_DOCS/*_v1.*
+02_DOCS/*_v2.*
+02_DOCS/*_v3.0_*
+02_DOCS/*_v3.1_*
+02_DOCS/*_v3.2_*
+
+# Python, virtual environments, logs & OS metadata
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
