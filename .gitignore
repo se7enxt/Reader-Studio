@@ -2,6 +2,7 @@
 03_ASSETS/
 04_AUDIO/
 *.pdf
+!02_DOCS/KOKORO_DOC_FeaturesGuide_v3.3_20261120_FINAL.pdf
 *.docx
 *.doc
 *.rtf
@@ -14,6 +15,7 @@
 *.db
 *.sqlite
 *.sqlite3
+*.zip
 
 # Exclude legacy pre-v3.3 iterations (v3.3 only in public repo)
 04_SCRIPTS/*_v1.*
@@ -28,11 +30,12 @@
 02_DOCS/*_v3.1_*
 02_DOCS/*_v3.2_*
 
-# Python, virtual environments, logs & OS metadata
+# Python, virtual environments, portable runtime & OS metadata
 __pycache__/
 *.py[cod]
 *$py.class
 .venv/
+.runtime/
 venv/
 env/
 .env

@@ -6,6 +6,20 @@ Currently powered by [`hexgrad/Kokoro-82M`](https://huggingface.co/hexgrad/Kokor
 
 ---
 
+## Portable One-Click Mac Bundle (Zero Prerequisites)
+
+Want to send **Reader Studio** to another Mac without installing Python, Homebrew, FFmpeg, or eSpeak NG manually?
+
+1. Download **`Reader-Studio-v3.3-Mac-Portable.zip`** (and optionally **`Reader-Studio-v3.3-Features-Guide.pdf`**) from the [v3.3 GitHub Release](https://github.com/se7enxt/Reader-Studio/releases/tag/v3.3).
+2. Unzip the archive anywhere (for example `Downloads` or `Applications`).
+3. Double-click **`Start Reader Studio.command`** *(first launch only: **Right-Click → Open → Open** to approve macOS Gatekeeper)*.
+   - Automatically installs standalone Python 3.12 (`uv`), all required packages, and bundled `espeakng-loader` + `imageio-ffmpeg` audio tools into an isolated local `.venv`, downloads `Kokoro-82M` weights once, and opens **http://127.0.0.1:7880/** in Google Chrome (or your default browser if Chrome isn't installed).
+4. Use **`Stop Reader Studio.command`** (or press `Ctrl + C`) whenever you want to stop the local server.
+
+A readable 3-page visual **Features & Quick-Start Guide PDF** is included inside the ZIP root (`Reader Studio — Quick Start & Features Guide.pdf`) and in [`02_DOCS/KOKORO_DOC_FeaturesGuide_v3.3_20261120_FINAL.pdf`](02_DOCS/KOKORO_DOC_FeaturesGuide_v3.3_20261120_FINAL.pdf).
+
+---
+
 ## Core Capabilities
 
 - **Fast-Start Paragraph Streaming & Lookahead Caching**  

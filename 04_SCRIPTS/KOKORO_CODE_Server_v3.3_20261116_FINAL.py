@@ -1968,12 +1968,27 @@ def load_document_from_path(
 # ==============================================================================
 # AUDIO TRANSCODING: FULL-RES MP3 (320k), LO-QUALITY MP3 (48k), FULL-RES WAV
 # ==============================================================================
+def _resolve_ffmpeg_bin() -> str:
+    found = shutil.which("ffmpeg")
+    if found:
+        return found
+    try:
+        import imageio_ffmpeg
+        exe = imageio_ffmpeg.get_ffmpeg_exe()
+        if exe and Path(exe).exists():
+            return str(exe)
+    except Exception:
+        pass
+    return "ffmpeg"
+
+
 def convert_wav_to_mp3(wav_path: Path, quality: str, task_id: Optional[str] = None) -> Path:
+    ffmpeg_bin = _resolve_ffmpeg_bin()
     if quality == "full_mp3":
         mp3_path = wav_path.with_name(f"{wav_path.stem}_FullRes_320kbps.mp3")
         label_desc = "Full-Resolution 320 kbps Stereo MP3 (48kHz)"
         cmd = [
-            "ffmpeg", "-y", "-i", str(wav_path),
+            ffmpeg_bin, "-y", "-i", str(wav_path),
             "-vn", "-ar", "48000", "-ac", "2",
             "-c:a", "libmp3lame", "-b:a", "320k",
             str(mp3_path)
@@ -1982,7 +1997,7 @@ def convert_wav_to_mp3(wav_path: Path, quality: str, task_id: Optional[str] = No
         mp3_path = wav_path.with_name(f"{wav_path.stem}_LoQuality_48kbps.mp3")
         label_desc = "Compact Lo-Quality 48 kbps Mono MP3 (24kHz)"
         cmd = [
-            "ffmpeg", "-y", "-i", str(wav_path),
+            ffmpeg_bin, "-y", "-i", str(wav_path),
             "-vn", "-ar", "24000", "-ac", "1",
             "-c:a", "libmp3lame", "-b:a", "48k",
             str(mp3_path)
